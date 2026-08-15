@@ -125,12 +125,63 @@ section { padding:110px 0; }
 /* ============================================================
    DOT NAVIGATION
    ============================================================ */
-.dotnav { position:fixed; right:26px; top:50%; transform:translateY(-50%); z-index:90; display:flex; flex-direction:column; gap:14px; }
-.dotnav a { width:8px; height:8px; border-radius:50%; background:var(--ink-3); border:1px solid var(--border-strong); transition:all .25s var(--ease); position:relative; display:block; }
-.dotnav a.active { background:var(--gradient); transform:scale(1.35); border-color:transparent; }
-.dotnav a span { position:absolute; right:20px; top:50%; transform:translateY(-50%); white-space:nowrap; font-size:11px; font-family:'JetBrains Mono',monospace; background:var(--ink-2); border:1px solid var(--border-strong); padding:4px 10px; border-radius:6px; opacity:0; pointer-events:none; transition:opacity .2s; color:var(--slate); }
-.dotnav a:hover span { opacity:1; }
-@media (max-width:980px) { .dotnav { display:none; } }
+/* ============================================================
+   DOT NAVIGATION
+   ============================================================ */
+.dotnav { 
+  position: fixed; 
+  right: 24px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  z-index: 99; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 14px; 
+}
+.dotnav a { 
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%; 
+  background: var(--ink-3); 
+  border: 1.5px solid var(--border-strong); 
+  transition: all .25s var(--ease); 
+  position: relative; 
+  display: block; 
+}
+.dotnav a:hover {
+  border-color: var(--aurora);
+  transform: scale(1.2);
+}
+.dotnav a.active { 
+  background: var(--gradient) !important; 
+  border-color: transparent !important; 
+  transform: scale(1.4); 
+  box-shadow: 0 0 10px rgba(232, 201, 122, 0.6);
+}
+.dotnav a span { 
+  position: absolute; 
+  right: 22px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  white-space: nowrap; 
+  font-size: 11px; 
+  font-family: 'JetBrains Mono', monospace; 
+  background: var(--ink-2); 
+  border: 1px solid var(--border-strong); 
+  padding: 4px 10px; 
+  border-radius: 6px; 
+  opacity: 0; 
+  pointer-events: none; 
+  transition: opacity .2s ease, transform .2s ease; 
+  color: var(--foam); 
+}
+.dotnav a:hover span { 
+  opacity: 1; 
+  transform: translateY(-50%) translateX(-4px);
+}
+@media (max-width: 980px) { 
+  .dotnav { display: none; } 
+}
 
 /* ============================================================
    HEADER / NAVIGATION
@@ -498,30 +549,6 @@ nav { display:flex; align-items:center; justify-content:space-between; }
 @media (max-width:900px) { .architect-wrap { grid-template-columns:1fr; } .option-grid { grid-template-columns:1fr; } }
 @media (max-width:520px) { .option-grid { grid-template-columns:1fr; } }
 
-/* ============================================================
-   PRICING
-   ============================================================ */
-.toggle-wrap { display:flex; justify-content:center; align-items:center; gap:14px; margin-bottom:44px; }
-.toggle-wrap span { font-size:13.5px; color:var(--slate); transition:color .2s; }
-.toggle-wrap span.on { color:var(--foam); font-weight:600; }
-.switch { width:46px; height:25px; border-radius:100px; background:var(--ink-3); border:1px solid var(--border-strong); position:relative; cursor:pointer; transition:background .25s; }
-.switch::after { content:''; position:absolute; top:2px; left:2px; width:19px; height:19px; border-radius:50%; background:var(--gradient); transition:transform .25s var(--ease); }
-.switch.on { background:rgba(201,168,76,0.2); }
-.switch.on::after { transform:translateX(21px); }
-.pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.price-card { background:var(--ink); border:1px solid var(--border); border-radius:var(--radius); padding:30px 24px; position:relative; transition:transform .25s var(--ease), border-color .25s; }
-.price-card:hover { transform:translateY(-5px); }
-.price-card.featured { border-color:rgba(201,168,76,.45); background:var(--ink-2); box-shadow:0 0 50px -12px rgba(201,168,76,.18); }
-.price-badge { position:absolute; top:-13px; left:24px; background:var(--gradient); color:#0A0C14; font-size:11px; font-weight:700; padding:5px 14px; border-radius:100px; font-family:'JetBrains Mono',monospace; }
-.price-card h4 { font-size:17px; margin-bottom:6px; }
-.price-sub { font-size:12.5px; color:var(--slate); margin-bottom:18px; }
-.price-tag { font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; margin-bottom:22px; transition:all .3s var(--ease); }
-.price-tag span { font-size:13px; color:var(--slate); font-family:'Inter',sans-serif; font-weight:400; }
-.price-list { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
-.price-list li { font-size:13px; color:var(--slate); display:flex; gap:9px; align-items:flex-start; }
-.price-list li svg { width:14px; height:14px; color:var(--verified); flex-shrink:0; margin-top:3px; }
-.price-card .btn { width:100%; justify-content:center; }
-@media (max-width:980px) { .pricing-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; } }
 
 /* ============================================================
    OFFICES — GLOBAL OPERATIONS STATUS
@@ -698,10 +725,8 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
   <a href="#services" data-sec="services"><span>Services</span></a>
   <a href="#pipeline" data-sec="pipeline"><span>Pipeline</span></a>
   <a href="#work" data-sec="work"><span>Work</span></a>
-  <a href="#team" data-sec="team"><span>Team</span></a>
   <a href="#opportunities" data-sec="opportunities"><span>Careers</span></a>
   <a href="#architect" data-sec="architect"><span>Blueprint</span></a>
-  <a href="#pricing" data-sec="pricing"><span>Pricing</span></a>
   <a href="#contact" data-sec="contact"><span>Contact</span></a>
 </nav>
 
@@ -712,17 +737,18 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
   <div class="wrap">
     <nav>
       <a href="#home" class="brand">
-        <span class="brand-mark"><img src="A&amp;S_logo.jpeg" alt="A/S NEXTGEN logo" width="38" height="38"></span>
-        <span>A/S NEXTGEN<small>Pvt Ltd</small></span>
-      </a>
-      <ul class="nav-links" role="list">
+  <span class="brand-mark"><img src="A&amp;S_logo.jpeg" alt="A/S NEXTGEN logo" width="38" height="38"></span>
+  <span>A/S NEXT<span class="grad">GEN</span><small>Pvt Ltd</small></span>
+</a>
+
+      <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#work">Our Work</a></li>
         <li><a href="#opportunities">Careers</a></li>
         <li><a href="#architect">Blueprint</a></li>
-        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
       <div class="nav-right">
         <div class="status-pill" aria-label="System status: online">
           <span class="status-dot" aria-hidden="true"></span>
@@ -748,21 +774,18 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-menu-top">
     <a href="#home" class="brand">
-      <span class="brand-mark"><img src="A&amp;S_logo.jpeg" alt="A/S NEXTGEN logo" width="36" height="36"></span>
-      <span>A/S NEXTGEN</span>
-    </a>
+  <span class="brand-mark"><img src="A&amp;S_logo.jpeg" alt="A/S NEXTGEN logo" width="36" height="36"></span>
+  <span>A/S NEXT<span class="grad">GEN</span></span>
+</a>
     <button class="menu-toggle" id="menuClose" aria-label="Close menu">
       <svg><use href="#ic-x"/></svg>
     </button>
   </div>
-  <ul role="list">
-    <li><a href="#home">Home</a></li>
+  <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Our Work</a></li>
-    <li><a href="#team">Team</a></li>
     <li><a href="#opportunities">Careers</a></li>
-    <li><a href="#architect">Build a Blueprint</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#architect">Blueprint</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="mobile-menu-footer">
@@ -772,7 +795,6 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
     </button>
   </div>
 </div>
-
 <!-- ============================================================ -->
 <!-- COMMAND PALETTE                                              -->
 <!-- ============================================================ -->
@@ -1107,6 +1129,7 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
 </section>
 
 
+
 <!-- ============================================================ -->
 <!-- CAREER EXPLORER                                              -->
 <!-- ============================================================ -->
@@ -1279,7 +1302,6 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
     </div>
   </div>
 </section>
-
 <!-- ============================================================ -->
 <!-- OFFICES — GLOBAL OPERATIONS STATUS                          -->
 <!-- ============================================================ -->
@@ -1515,9 +1537,9 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
       <a href="#home" class="brand footer-system-logo">
         <span class="brand-mark"><img src="A&amp;S_logo.jpeg" alt="A/S NEXTGEN logo" width="38" height="38"></span>
         <div class="footer-system-info">
-          <h3>A/S NEXTGEN</h3>
-          <p>DIGITAL SYSTEMS · AI · ENGINEERING</p>
-        </div>
+  <h3>A/S NEXT<span class="grad">GEN</span></h3>
+  <p>DIGITAL SYSTEMS · AI · ENGINEERING</p>
+</div>
       </a>
     </div>
     <div class="footer-grid">
@@ -1537,14 +1559,6 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
       </div>
       <div class="footer-col">
         <h5>Navigate</h5>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#work">Our Work</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#opportunities">Careers</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
       </div>
       <div class="footer-col">
         <h5>Hungary HQ</h5>
@@ -1558,7 +1572,7 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
       <div class="footer-col">
         <h5>India Office</h5>
         <ul>
-          <li>Tiruchirappalli</li>
+          <li>Coimbatore</li>
           <li>Tamil Nadu, India</li>
           <li><a href="tel:+917339011916">+91 73390 11916</a></li>
           <li>Mon–Fri, 09:00–18:00 IST</li>
@@ -1640,23 +1654,66 @@ function initAnimations() {
 /* ============================================================
    NAVIGATION
    ============================================================ */
+/* ============================================================
+   NAVIGATION & ACTIVE DOT TRACKING
+   ============================================================ */
 function initNavigation() {
   const header = qs('#header');
   const ghostCta = qs('#ghostCta');
-  const dotnav = qs('#dotnav');
   const dotLinks = qsa('.dotnav a');
   const sections = qsa('section[id]');
+
+  function updateActiveSection() {
+    const scrollPos = window.scrollY + window.innerHeight / 3;
+    let current = 'home';
+
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        current = sec.getAttribute('id');
+      }
+    });
+
+    // Check if bottom of page reached
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+      current = 'contact';
+    }
+
+    dotLinks.forEach(a => {
+      const isActive = a.dataset.sec === current;
+      a.classList.toggle('active', isActive);
+      if (isActive) {
+        a.setAttribute('aria-current', 'true');
+      } else {
+        a.removeAttribute('aria-current');
+      }
+    });
+  }
 
   on(window, 'scroll', () => {
     const y = window.scrollY;
     header.classList.toggle('scrolled', y > 40);
     if (ghostCta) ghostCta.style.display = y > 80 ? 'inline-flex' : 'none';
-    let current = 'home';
-    sections.forEach(sec => { if (y >= sec.offsetTop - 220) current = sec.id; });
-    dotLinks.forEach(a => a.classList.toggle('active', a.dataset.sec === current));
+    updateActiveSection();
   }, { passive: true });
 
-  // Mobile menu
+  // Smooth scroll on dot click
+  dotLinks.forEach(link => {
+    on(link, 'click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSec = qs(targetId);
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Initial calculation on load
+  updateActiveSection();
+
+  // Mobile menu handlers
   const menuToggle = qs('#menuToggle');
   const menuClose = qs('#menuClose');
   const mobileMenu = qs('#mobileMenu');
@@ -1675,11 +1732,10 @@ function initNavigation() {
   on(menuToggle, 'click', openMenu);
   on(menuClose, 'click', closeMenu);
   qsa('a', mobileMenu).forEach(a => on(a, 'click', closeMenu));
-
-  // Escape key to close menu
-  on(document, 'keydown', e => { if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu(); });
+  on(document, 'keydown', e => { 
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu(); 
+  });
 }
-
 /* ============================================================
    COMMAND PALETTE
    ============================================================ */
@@ -1696,10 +1752,8 @@ function initCommandPalette() {
     { label: 'View Projects', icon: 'ic-briefcase', href: '#work', hint: '↵' },
     { label: 'Engineering Pipeline', icon: 'ic-zap', href: '#pipeline', hint: '↵' },
     { label: 'Tech Stack', icon: 'ic-cpu', href: '#stack', hint: '↵' },
-    { label: 'Meet the Team', icon: 'ic-users', href: '#team', hint: '↵' },
     { label: 'Explore Careers', icon: 'ic-award', href: '#opportunities', hint: '↵' },
     { label: 'Build a Project Blueprint', icon: 'ic-code', href: '#architect', hint: '↵' },
-    { label: 'View Pricing', icon: 'ic-dollar', href: '#pricing', hint: '↵' },
     { label: 'Contact NEXTGEN', icon: 'ic-contact', href: '#contact', hint: '↵' },
   ];
 
@@ -1789,7 +1843,6 @@ function initHeroCore() {
   ];
 
   const nodesContainer = qs('#coreNodes');
-  const coreSvg = qs('#coreSvg');
   const orb = qs('#coreOrb');
 
   function getPos(angle, radius) {
@@ -2417,32 +2470,6 @@ function initProjectArchitect() {
   }
 }
 
-/* ============================================================
-   PRICING TOGGLE
-   ============================================================ */
-function initPricing() {
-  const sw = qs('#pricingSwitch');
-  const labelP = qs('#labelProject');
-  const labelM = qs('#labelMonthly');
-  const tags = qsa('.price-tag');
-  let monthly = false;
-
-  function update() {
-    sw.classList.toggle('on', monthly);
-    sw.setAttribute('aria-checked', monthly ? 'true' : 'false');
-    labelP.classList.toggle('on', !monthly);
-    labelM.classList.toggle('on', monthly);
-    tags.forEach(tag => {
-      const val = monthly ? tag.dataset.monthly : tag.dataset.project;
-      const sub = monthly ? tag.dataset.monthlysub : tag.dataset.projectsub;
-      tag.innerHTML = val + (sub ? '<span>' + sub + '</span>' : '');
-    });
-  }
-
-  on(sw, 'click', () => { monthly = !monthly; update(); });
-  on(sw, 'keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); monthly = !monthly; update(); } });
-  update();
-}
 
 /* ============================================================
    OFFICE CLOCKS
@@ -2590,11 +2617,6 @@ function initContactForm() {
 }
 
 /* ============================================================
-   NUMBER COUNTER for stats
-   ============================================================ */
-// (Handled in initContactForm above)
-
-/* ============================================================
    BOOT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2612,7 +2634,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
   initCareerExplorer();
   initProjectArchitect();
-  initPricing();
   initOfficeClocks();
   initFAQ();
   initContactForm();
