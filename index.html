@@ -659,7 +659,7 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
 .footer-bottom .legal a { font-size:11.5px; color:var(--slate-dim); font-family:'JetBrains Mono',monospace; }
 .footer-shutdown { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--slate-dim); display:flex; align-items:center; gap:6px; }
 @media (max-width:980px) { .footer-grid { grid-template-columns:1fr 1fr; } }
-@media (max-width:640px) { .footer-grid { grid-template-columns:1fr; } }
+@media (max-width:640px) { .footer-grid { grid-template-columns:1fr; } }c:\Users\asmit\Downloads\full_bible.json
 
 /* ============================================================
    CURSOR GLOW
@@ -1025,17 +1025,15 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
       <h2>Live projects with real results</h2>
       <p>Every project below is complete and in production. Click any card to explore the case study.</p>
     </div>
-    <div class="filter-chips" role="group" aria-label="Filter projects by industry">
-      <button class="chip active" data-filter="all">All</button>
-      <button class="chip" data-filter="healthcare">Healthcare</button>
-      <button class="chip" data-filter="education">Education</button>
-      <button class="chip" data-filter="retail">Retail</button>
-    </div>
+   <div class="filter-chips">
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-filter="app">Apps</button>
+</div>
     <div class="work-grid" id="workGrid">
       <div class="work-card reveal" data-cat="healthcare" data-project="medcare" tabindex="0" role="button" aria-label="View MedCare Hospital OS case study">
         <div class="work-top">
           <div class="work-tags"><span class="tag live">Completed</span><span class="tag">Healthcare</span></div>
-          <h4>MedCare Hospital OS</h4>
+          <h4>Métier</h4>
           <p class="desc">Electronic health records, billing, and doctor scheduling for a regional hospital network.</p>
         </div>
         <div class="work-metric"><svg><use href="#ic-check"/></svg><span>Cut patient check-in time by 40%</span></div>
@@ -1044,29 +1042,20 @@ footer { border-top:1px solid var(--border); padding:64px 0 28px; }
           <span class="case-link">Case study <svg width="12" height="12"><use href="#ic-arrow"/></svg></span>
         </div>
       </div>
-      <div class="work-card reveal" data-cat="education" data-project="campus" tabindex="0" role="button" aria-label="View Campus ERP Suite case study">
+      <div class="work-card reveal" data-cat="healthcare" data-project="medcare" tabindex="0" role="button" aria-label="View MedCare Hospital OS case study">
         <div class="work-top">
-          <div class="work-tags"><span class="tag live">Completed</span><span class="tag">Education</span></div>
-          <h4>Campus ERP Suite</h4>
-          <p class="desc">Attendance, grading, and parent portals for a multi-branch school trust.</p>
+          <div class="work-tags"><span class="tag live">Completed</span><span class="tag">Healthcare</span></div>
+          <h4>GirlFriend</h4>
+          <p class="desc">Electronic health records, billing, and doctor scheduling for a regional hospital network.</p>
         </div>
-        <div class="work-metric"><svg><use href="#ic-check"/></svg><span>Automated attendance for 6,000+ students</span></div>
+        <div class="work-metric"><svg><use href="#ic-check"/></svg><span>Cut patient check-in time by 40%</span></div>
         <div class="work-foot">
-          <span class="work-stack">Next.js · MongoDB</span>
+          <span class="work-stack">React · Node.js</span>
           <span class="case-link">Case study <svg width="12" height="12"><use href="#ic-arrow"/></svg></span>
         </div>
       </div>
-      <div class="work-card reveal" data-cat="retail" data-project="tableready" tabindex="0" role="button" aria-label="View TableReady POS case study">
-        <div class="work-top">
-          <div class="work-tags"><span class="tag live">Completed</span><span class="tag">Retail</span></div>
-          <h4>TableReady POS</h4>
-          <p class="desc">Point-of-sale and reservations system with live kitchen display integration.</p>
-        </div>
-        <div class="work-metric"><svg><use href="#ic-check"/></svg><span>15,000+ orders processed in Q1</span></div>
-        <div class="work-foot">
-          <span class="work-stack">React Native · MySQL</span>
-          <span class="case-link">Case study <svg width="12" height="12"><use href="#ic-arrow"/></svg></span>
-        </div>
+      
+        
       </div>
     </div>
   </div>
