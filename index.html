@@ -56,6 +56,9 @@
 
     html {
       scroll-behavior: smooth;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     body {
@@ -63,6 +66,8 @@
       color: var(--foam);
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
+      width: 100%;
+      max-width: 100%;
       overflow-x: hidden;
     }
 
@@ -125,6 +130,14 @@
 
     section {
       padding: 110px 0;
+    }
+
+    #testimonials {
+      padding-bottom: 35px;
+    }
+
+    #opportunities {
+      padding-top: 35px;
     }
 
     .section-head {
@@ -792,9 +805,15 @@
 
     .hero-ctas {
       display: flex;
+      align-items: center;
       gap: 14px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-bottom: 44px;
+    }
+
+    .hero-ctas .btn {
+      white-space: nowrap;
+      flex: 0 1 auto;
     }
 
     .hero-stats {
@@ -802,6 +821,9 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       max-width: 440px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+      max-width: 100%;
     }
 
     .stat-cell {
@@ -809,7 +831,12 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 14px 16px;
+      min-width: 0;
+      padding: 12px;
     }
+
+
+
 
     .stat-cell .n {
       font-family: 'Space Grotesk', sans-serif;
@@ -1020,23 +1047,7 @@
       line-height: 1.5;
     }
 
-    /* System Status Panel */
-    .status-panel {
-      background: var(--term);
-      border: 1px solid var(--border-strong);
-      border-radius: 14px;
-      overflow: hidden;
-      margin-top: 24px;
-    }
 
-    .status-panel-head {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 16px;
-      background: var(--ink-2);
-      border-bottom: 1px solid var(--border);
-    }
 
     .t-dot {
       width: 9px;
@@ -1127,62 +1138,61 @@
       .hero-stats {
         max-width: 100%;
       }
-    }
 
-    /* ============================================================
-   SERVICES
-   ============================================================ */
-    .tabs-shell {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 20px;
-      background: var(--ink);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 20px;
-    }
 
-    .tab-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+      .tabs-shell {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 14px;
+      }
 
-    .tab-btn {
-      text-align: left;
-      padding: 13px 16px;
-      border-radius: 10px;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--slate);
-      font-size: 14px;
-      font-weight: 500;
-      transition: all .2s var(--ease);
-    }
+      .tab-btns {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        flex-direction: unset;
+        overflow-x: visible;
+        gap: 6px;
+      }
 
-    .tab-btn.active {
-      background: var(--ink-3);
-      border-color: var(--border-strong);
-      color: var(--foam);
-    }
+      .tab-btn {
+        width: 100%;
+        min-width: 0;
 
-    .tab-btn:hover:not(.active) {
-      background: var(--ink-2);
-      color: var(--foam);
-    }
+        text-align: center;
 
-    .tab-panels {
-      position: relative;
-    }
+        padding: 10px 6px;
 
-    .tab-panel {
-      display: none;
-      padding: 14px 18px;
-      animation: panel-fade .25s ease;
-    }
+        white-space: normal;
 
-    .tab-panel.active {
-      display: block;
+        font-size: 11px;
+
+        background: transparent !important;
+      }
+
+      .tab-btn.active {
+        background: var(--ink-3) !important;
+      }
+
+
+
+      .tab-btn:hover:not(.active) {
+        background: var(--ink-2) !important;
+        color: var(--foam);
+      }
+
+      .tab-panels {
+        position: relative;
+      }
+
+      .tab-panel {
+        display: none;
+        padding: 14px 18px;
+        animation: panel-fade .25s ease;
+      }
+
+      .tab-panel.active {
+        display: block;
+      }
     }
 
     @keyframes panel-fade {
@@ -1195,8 +1205,8 @@
         opacity: 1;
         transform: translateY(0);
       }
+    
     }
-
     .tab-panel h4 {
       font-size: 22px;
       margin-bottom: 14px;
@@ -1231,22 +1241,684 @@
       background: rgba(34, 197, 94, .07);
     }
 
-    @media (max-width:720px) {
-      .tabs-shell {
-        grid-template-columns: 1fr;
-      }
 
-      .tab-btns {
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 8px;
-      }
+  /* ============================================================
+  SERVICES
+  ============================================================ */
 
-      .tab-btn {
-        white-space: nowrap;
-        padding: 10px 14px;
-      }
-    }
+
+
+.tabs-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 20px;
+
+  width: 100%;
+  min-width: 0;
+
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.tab-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.tab-btn {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 13px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: transparent;
+  color: var(--slate);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: var(--ink-3);
+  border-color: var(--border-strong);
+  color: var(--foam);
+}
+
+.tab-btn:hover:not(.active) {
+  background: var(--ink-2);
+  color: var(--foam);
+}
+
+.tab-panels {
+  min-width: 0;
+}
+
+.tab-panel {
+  display: none;
+  min-width: 0;
+  padding: 14px 18px;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-panel h4 {
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.tab-panel p {
+  color: var(--slate);
+  font-size: 14.5px;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 22px;
+}
+
+.tab-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+  @keyframes panel-fade {
+  from {
+  opacity: 0;
+  transform: translateY(6px);
+  }
+
+  to {
+  opacity: 1;
+  transform: translateY(0);
+  }
+  }
+
+  .tab-panel h4 {
+  font-size: 22px;
+  margin-bottom: 14px;
+  }
+
+  .tab-panel p {
+  color: var(--slate);
+  font-size: 14.5px;
+  line-height: 1.7;
+
+  max-width: 500px;
+
+  margin-bottom: 22px;
+  }
+
+  .tab-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  }
+
+  .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+
+  padding: 5px 12px;
+
+  border-radius: 100px;
+
+  border: 1px solid var(--border-strong);
+
+  color: var(--slate);
+
+  display: inline-block;
+  }
+
+  .tag.live {
+  color: var(--verified);
+  border-color: rgba(34, 197, 94, .3);
+  background: rgba(34, 197, 94, .07);
+  }
+
+
+  /* ============================================================
+  HERO RESPONSIVE
+  ============================================================ */
+
+  @media (max-width: 980px) {
+
+  .hero-grid {
+  grid-template-columns: 1fr;
+  gap: 50px;
+  }
+
+  .core-container {
+  max-width: 360px;
+  }
+
+  }
+
+
+  /* ============================================================
+  TABLET SERVICES
+  ============================================================ */
+
+  @media (max-width: 980px) {
+
+  .tabs-shell {
+  grid-template-columns: 1fr;
+  }
+
+  .tab-btns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  }
+
+  .tab-btn {
+  text-align: center;
+  }
+
+  }
+
+
+  /* ============================================================
+  MOBILE — 720px
+  ============================================================ */
+
+  @media (max-width: 720px) {
+
+  section {
+  padding: 80px 0;
+  }
+
+  .wrap {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  }
+
+
+  /* ---------------- HERO ---------------- */
+
+  .hero {
+  padding: 120px 0 70px;
+  }
+
+  .hero-grid {
+  grid-template-columns: 1fr;
+  gap: 28px;
+  }
+
+  .hero-terminal {
+  display: none;
+  }
+
+  .hero h1 {
+  font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .hero p.lead {
+  font-size: 15px;
+  line-height: 1.7;
+  }
+
+
+  /* HERO BUTTONS */
+
+  .hero-ctas {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: nowrap;
+
+  margin-bottom: 32px;
+  }
+
+  .hero-ctas .btn {
+  flex: 1 1 0;
+  min-width: 0;
+
+  padding: 11px 8px;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  justify-content: center;
+  }
+
+  .hero-ctas .btn svg {
+  width: 15px;
+  height: 15px;
+
+  flex-shrink: 0;
+  }
+
+
+  /* HERO STATS */
+
+  .hero-stats {
+  width: 100%;
+  max-width: 100%;
+
+  grid-template-columns:
+  repeat(2, minmax(0, 1fr));
+
+  gap: 8px;
+  }
+
+  .stat-cell {
+  min-width: 0;
+  padding: 12px;
+  }
+
+
+  /* CORE */
+
+  .core-container {
+  width: 100%;
+  max-width: 300px;
+  margin-inline: auto;
+  }
+
+
+  /* ---------------- SERVICES ---------------- */
+
+  .tabs-shell {
+  grid-template-columns: 1fr;
+
+  gap: 14px;
+
+  padding: 14px;
+
+  width: 100%;
+  }
+
+  .tab-btns {
+  display: grid;
+
+  grid-template-columns:
+  repeat(3, minmax(0, 1fr));
+
+  gap: 6px;
+
+  width: 100%;
+  }
+
+  .tab-btn {
+  width: 100%;
+  min-width: 0;
+
+  padding: 10px 5px;
+
+  text-align: center;
+
+  font-size: 11px;
+
+  line-height: 1.25;
+
+  white-space: normal;
+
+  background: transparent;
+  }
+
+  .tab-btn.active {
+  background: var(--ink-3);
+  }
+
+  .tab-btn:hover:not(.active) {
+  background: var(--ink-2);
+  }
+
+  .tab-panel {
+  padding: 14px 4px;
+  }
+
+  .tab-panel h4 {
+  font-size: 20px;
+  }
+
+  .tab-panel p {
+  font-size: 14px;
+  }
+
+
+  /* ---------------- WORK ---------------- */
+
+  .work-grid {
+  grid-template-columns: 1fr;
+  }
+
+  .work-card {
+  width: 100%;
+  min-width: 0;
+  }
+
+
+  /* ---------------- OFFICES ---------------- */
+
+  .office-grid {
+  grid-template-columns: 1fr;
+  }
+
+
+  /* ---------------- CONTACT ---------------- */
+
+  .contact-console {
+  grid-template-columns: 1fr;
+  }
+
+
+  /* ---------------- CAROUSEL ---------------- */
+
+  .slide {
+  padding: 28px 20px;
+  }
+
+  }
+
+
+  /* ============================================================
+  MOBILE HEADER
+  ============================================================ */
+
+  @media (max-width: 600px) {
+
+  header {
+  padding: 12px 0;
+  }
+
+  header .wrap {
+  width: 100%;
+  max-width: 100%;
+
+  padding-left: 14px;
+  padding-right: 14px;
+  }
+
+  header nav {
+  width: 100%;
+  max-width: 100%;
+
+  gap: 8px;
+  }
+
+  .brand {
+  flex: 1;
+
+  min-width: 0;
+  max-width: 100%;
+
+  gap: 8px;
+
+  white-space: nowrap;
+  }
+
+  .brand-mark {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+  }
+
+  .brand > span:last-child {
+  min-width: 0;
+
+  white-space: nowrap;
+
+  font-size: 15px;
+  line-height: 1.1;
+  }
+
+  .brand small {
+  display: block;
+
+  font-size: 8px;
+  line-height: 1;
+
+  margin-top: 2px;
+  }
+
+  .nav-right {
+  gap: 7px;
+
+  flex-shrink: 0;
+  min-width: 0;
+  }
+
+  .cmd-btn {
+  padding: 6px 8px;
+  }
+
+  .cmd-btn kbd {
+  display: none;
+  }
+
+  .cmd-btn span {
+  display: none;
+  }
+
+  .btn-sm {
+  padding: 9px 12px;
+  font-size: 12px;
+  }
+
+  .menu-toggle {
+  display: block;
+  flex-shrink: 0;
+  }
+
+  .menu-toggle svg {
+  width: 20px;
+  height: 20px;
+  }
+
+
+  /* HERO BUTTONS — SMALL PHONES */
+
+  .hero-ctas {
+  gap: 7px;
+  }
+
+  .hero-ctas .btn {
+  padding: 10px 6px;
+  font-size: 11px;
+  }
+
+  }
+
+
+  /* ============================================================
+  VERY SMALL PHONES — 420px
+  ============================================================ */
+
+  @media (max-width: 420px) {
+
+  .wrap {
+  padding-left: 14px;
+  padding-right: 14px;
+  }
+
+  .hero {
+  padding-top: 110px;
+  }
+
+  .hero-ctas {
+  gap: 6px;
+  }
+
+  .hero-ctas .btn {
+  padding: 10px 5px;
+  font-size: 10.5px;
+  }
+
+  .hero-ctas .btn svg {
+  width: 14px;
+  height: 14px;
+  }
+
+  .tabs-shell {
+  padding: 10px;
+  }
+
+  .tab-btns {
+  gap: 4px;
+  }
+
+  .tab-btn {
+  padding: 9px 3px;
+  font-size: 10px;
+  }
+
+  .tab-panel {
+  padding-left: 2px;
+  padding-right: 2px;
+  }
+
+  }
+
+
+  /* ============================================================
+  MODAL — MOBILE
+  ============================================================ */
+
+  @media (max-width: 640px) {
+
+  .modal-box {
+  width: calc(100vw - 24px);
+  max-width: calc(100vw - 24px);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  border-radius: 14px;
+  }
+
+  .modal-body {
+  grid-template-columns: 1fr;
+
+  padding: 20px;
+
+  min-width: 0;
+  }
+
+  .modal-section {
+  min-width: 0;
+  }
+
+  .modal-foot {
+  padding: 14px 20px;
+  }
+
+  }
+
+
+  /* ============================================================
+  GLOBAL OVERFLOW PROTECTION
+  ============================================================ */
+
+  html,
+  body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  }
+
+  *,
+  *::before,
+  *::after {
+  box-sizing: border-box;
+  }
+
+  img,
+  video,
+  canvas,
+  iframe,
+  svg {
+  max-width: 100%;
+  }
+
+  section,
+  header,
+  footer,
+  main,
+  nav {
+  max-width: 100%;
+  }
+
+  .wrap,
+  .hero-grid,
+  .tabs-shell,
+  .tab-btns,
+  .tab-panels,
+  .work-grid,
+  .contact-console,
+  .office-grid,
+  .tech-grid,
+  .architect-wrap {
+  min-width: 0;
+  max-width: 100%;
+  }
+
+
+  /* Prevent long text from creating horizontal scrolling */
+
+  .tab-panel,
+  .work-card,
+  .office-card,
+  .modal-section,
+  .contact-console,
+  .footer-col {
+  overflow-wrap: anywhere;
+  }
+
+
+  /* Form controls */
+
+  input,
+  select,
+  textarea,
+  button {
+  max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+  min-width: 0;
+  }
+
+
+  /* ============================================================
+  SECTION SPACING
+  ============================================================ */
+
+  #testimonials {
+  padding-bottom: 35px;
+  }
+
+  #opportunities {
+  padding-top: 35px;
+  }
 
     /* ============================================================
    ENGINEERING PIPELINE
@@ -1565,10 +2237,14 @@
       color: var(--foam);
     }
 
+
     .work-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
     }
 
     .work-card {
@@ -1577,7 +2253,8 @@
       border-radius: 18px;
       overflow: hidden;
       cursor: pointer;
-
+      min-width: 0;
+      max-width: 100%;
       display: flex;
       flex-direction: column;
 
@@ -1588,10 +2265,11 @@
         border-color .25s ease,
         box-shadow .25s ease;
     }
+
     /* PROJECT FILTER */
-.work-card.hidden {
-    display: none !important;
-}
+    .work-card.hidden {
+      display: none !important;
+    }
 
     .work-card:hover {
       transform: translateY(-5px);
@@ -2355,6 +3033,27 @@
     @media (max-width:600px) {
       .role-cards {
         grid-template-columns: 1fr;
+      }
+
+      .hero-ctas {
+        width: 100%;
+        gap: 10px;
+        flex-wrap: nowrap;
+      }
+
+      .hero-ctas .btn {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 11px 10px;
+        font-size: 12px;
+        white-space: nowrap;
+        justify-content: center;
+      }
+
+      .hero-ctas .btn svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
       }
     }
 
@@ -3212,7 +3911,6 @@
       }
     }
 
-    c:\Users\asmit\Downloads\full_bible.json
 
     /* ============================================================
    CURSOR GLOW
@@ -3271,6 +3969,631 @@
         transform: translateY(5px);
       }
     }
+
+
+    /* ============================================================
+   MOBILE REFINEMENTS
+   ============================================================ */
+
+    @media (max-width: 720px) {
+
+      .hero-grid {
+        gap: 28px;
+      }
+
+      .hero-terminal {
+        display: none;
+      }
+
+    }
+
+
+    /* ============================================================
+   MOBILE HEADER
+   ============================================================ */
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 12px 0;
+      }
+
+      header .wrap {
+        padding: 0 14px;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      header nav {
+        width: 100%;
+        max-width: 100%;
+        gap: 8px;
+      }
+
+      .brand {
+        flex: 1;
+        min-width: 0;
+        max-width: 100%;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+      }
+
+      .brand>span:last-child {
+        min-width: 0;
+        white-space: nowrap;
+        font-size: 15px;
+        line-height: 1.1;
+      }
+
+      .brand small {
+        display: block;
+        font-size: 8px;
+        line-height: 1;
+        margin-top: 2px;
+      }
+
+      .nav-right {
+        gap: 7px;
+        flex-shrink: 0;
+        min-width: 0;
+      }
+
+      .cmd-btn {
+        padding: 6px 8px;
+      }
+
+      .cmd-btn kbd {
+        display: none;
+      }
+
+      .btn-sm {
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .menu-toggle {
+        flex-shrink: 0;
+      }
+
+      .menu-toggle svg {
+        width: 20px;
+        height: 20px;
+      }
+
+    }
+
+
+    /* ============================================================
+   SECTION SPACING
+   ============================================================ */
+
+    #testimonials {
+      padding-bottom: 35px;
+    }
+
+    #opportunities {
+      padding-top: 35px;
+    }
+
+
+    /* ============================================================
+   GLOBAL HORIZONTAL OVERFLOW PROTECTION
+   ============================================================ */
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+
+    /* Prevent media from expanding the viewport */
+
+    img,
+    video,
+    canvas,
+    iframe,
+    svg {
+      max-width: 100%;
+    }
+
+
+    /* Prevent major layout containers from exceeding viewport */
+
+    section,
+    header,
+    footer,
+    main,
+    nav {
+      max-width: 100%;
+    }
+
+
+    /* Main content wrapper */
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      max-width: 100%;
+      min-width: 0;
+      margin-inline: auto;
+    }
+
+
+    /* ============================================================
+   MOBILE WRAPPER
+   ============================================================ */
+
+    @media (max-width: 700px) {
+
+      .wrap {
+        width: calc(100% - 28px);
+        max-width: 100%;
+      }
+
+    }
+
+
+    /* ============================================================
+   GRID / FLEX OVERFLOW PROTECTION
+   ============================================================ */
+
+    .work-grid,
+    .contact-console,
+    .tech-grid,
+    .hero-grid,
+    .modal-body {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .work-card,
+    .tech-card,
+    .modal-section,
+    .contact-info-panel,
+    .contact-form {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+
+    /* Prevent long text / URLs from creating horizontal overflow */
+
+    .work-card,
+    .tech-card,
+    .modal-section,
+    .contact-row,
+    .office-detail,
+    .footer-col {
+      overflow-wrap: anywhere;
+    }
+
+
+    /* ============================================================
+   WORK GRID
+   ============================================================ */
+
+    .work-grid {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    @media (max-width: 720px) {
+
+      .work-grid {
+        grid-template-columns: 1fr;
+
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .work-card {
+        width: 100%;
+      }
+
+    }
+
+
+    /* ============================================================
+   CONTACT GRID
+   ============================================================ */
+
+    .contact-console {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .contact-console>* {
+      min-width: 0;
+    }
+
+    @media (max-width: 720px) {
+
+      .contact-console {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+    }
+
+
+    /* ============================================================
+   FORM CONTROLS
+   ============================================================ */
+
+    input,
+    select,
+    textarea,
+    button {
+      max-width: 100%;
+    }
+
+    input,
+    select,
+    textarea {
+      min-width: 0;
+    }
+
+
+    /* ============================================================
+   CAROUSEL
+   ============================================================ */
+
+    .carousel {
+      width: 100%;
+      max-width: 700px;
+      min-width: 0;
+    }
+
+    .carousel-track {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-slides {
+      min-width: 0;
+    }
+
+    .slide {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+
+    /* ============================================================
+   MODAL
+   ============================================================ */
+
+    .modal-box {
+      width: min(900px, calc(100vw - 32px));
+      max-width: calc(100vw - 32px);
+      min-width: 0;
+    }
+
+    .modal-body {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .modal-section {
+      min-width: 0;
+    }
+
+    @media (max-width: 640px) {
+
+      .modal-box {
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-body {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .modal-foot {
+        padding: 14px 20px;
+      }
+
+
+    
+    /* ============================================================
+   SERVICES VISIBILITY SAFETY FIX
+   ============================================================ */
+
+#services .section-head,
+#services .tabs-shell {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+#services .tab-panel.active {
+  display: block !important;
+}}
+
+/* ============================================================
+   MOBILE — REMOVE EXCESSIVE SPACING
+   ============================================================ */
+
+@media (max-width: 720px) {
+
+  /* ---------- GLOBAL SECTION SPACING ---------- */
+
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  section:first-of-type {
+    padding-top: 0;
+  }
+
+
+  /* ---------- CONTAINER ---------- */
+
+  .wrap {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  /* ---------- HEADER ---------- */
+
+  header {
+    padding: 8px 0;
+  }
+
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 45px;
+  }
+
+  .hero-grid {
+    gap: 22px;
+  }
+
+  .hero h1 {
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+
+  .hero p.lead {
+    margin-bottom: 20px;
+  }
+
+  .hero-ctas {
+    margin-bottom: 22px;
+  }
+
+  .hero-stats {
+    margin-top: 10px;
+  }
+
+
+  /* ---------- SECTION HEADINGS ---------- */
+
+  .section-head {
+    margin-bottom: 25px;
+  }
+
+  .section-head h2 {
+    margin-bottom: 10px;
+  }
+
+  .section-head p {
+    margin-bottom: 0;
+  }
+
+
+  /* ---------- SERVICES ---------- */
+
+  #services {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  #services .section-head {
+    margin-bottom: 20px;
+  }
+
+  .tabs-shell {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .tab-panel {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .tab-panel h4 {
+    margin-bottom: 10px;
+  }
+
+  .tab-panel p {
+    margin-bottom: 15px;
+  }
+
+
+  /* ---------- ENGINEERING PIPELINE ---------- */
+
+  #pipeline {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+
+  /* ---------- TECHNOLOGY ---------- */
+
+  #technology {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+
+  /* ---------- WORK / PROJECTS ---------- */
+
+  #work {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .work-grid {
+    gap: 14px;
+  }
+
+
+  /* ---------- OFFICES ---------- */
+
+  #offices {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .office-grid {
+    gap: 14px;
+  }
+
+
+  /* ---------- BLUEPRINT ---------- */
+
+  #blueprint {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+
+  /* ---------- TESTIMONIALS ---------- */
+
+  #testimonials {
+    padding-top: 45px;
+    padding-bottom: 35px;
+  }
+
+
+  /* ---------- OPPORTUNITIES ---------- */
+
+  #opportunities {
+    padding-top: 35px;
+    padding-bottom: 45px;
+  }
+
+
+  /* ---------- FAQ ---------- */
+
+  #faq {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+
+  /* ---------- CONTACT ---------- */
+
+  #contact {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+
+  /* ---------- FOOTER ---------- */
+
+  footer {
+    padding-top: 35px;
+    padding-bottom: 25px;
+  }
+
+}
+/* ============================================================
+   PROJECTS / WORK — MOBILE
+   ============================================================ */
+
+@media (max-width: 720px) {
+
+  #work {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  #work .section-head {
+    margin-bottom: 20px;
+  }
+
+  /* ONE CARD PER ROW */
+  #work .work-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* FULL WIDTH PROJECT CARD */
+  #work .work-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #work .work-card-body {
+    min-width: 0;
+  }
+
+  /* PROJECT TAGS */
+  #work .tag,
+  #work .work-tag,
+  #work .project-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: max-content;
+
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+}
+/* ============================================================
+   MOBILE HERO SPACING
+   ============================================================ */
+
+@media (max-width: 720px) {
+
+  .hero {
+    padding-top: 105px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .hero-grid {
+    gap: 20px;
+  }
+
+  .hero .eyebrow {
+    margin-top: 0 !important;
+    margin-bottom: 18px;
+  }
+
+}
   </style>
 </head>
 
@@ -3530,21 +4853,21 @@
         </div>
         <div class="hero-stats">
 
-  <div class="stat-cell reveal">
-    <div class="n" data-count="12">0</div>
-    <div class="l">Projects shipped</div>
-  </div>
+          <div class="stat-cell reveal">
+            <div class="n" data-count="12">0</div>
+            <div class="l">Projects shipped</div>
+          </div>
 
-  <div class="stat-cell reveal">
-    <div class="n" data-count="8">0</div>
-    <div class="l">Countries served</div>
-  </div>
+          <div class="stat-cell reveal">
+            <div class="n" data-count="8">0</div>
+            <div class="l">Countries served</div>
+          </div>
 
-</div>
+        </div>
 
-</div> 
+      </div>
 
-<div>
+      <div>
         <div class="core-container reveal-right" id="coreContainer">
           <div class="core-bg" aria-hidden="true"></div>
           <div class="core-ring core-ring-1" aria-hidden="true"></div>
@@ -3565,79 +4888,168 @@
           </div>
 
           <div class="core-orb" id="coreOrb" aria-label="NEXTGEN CORE — central hub">
-            <div class="core-orb-label">NEXTGEN<br>CORE</div>
+            <div class="core-orb-label">
+              NEXTGEN<br>CORE
+            </div>
           </div>
-        </div>
 
-        <!-- System Status Panel -->
-        <div class="status-panel reveal">
-          <div class="status-panel-head">
-            <span class="t-dot r" aria-hidden="true"></span>
-            <span class="t-dot y" aria-hidden="true"></span>
-            <span class="t-dot g" aria-hidden="true"></span>
-            <span class="status-panel-title">system_check.sh</span>
-          </div>
-          <div class="status-panel-body" id="termBody" aria-live="polite" aria-label="System status output"></div>
-        </div>
-      </div>
-    </div>
+        </div> <!-- END .core-container -->
+
+      </div> <!-- END .hero-grid -->
+
+    </div> <!-- END .wrap -->
+
   </section>
 
-  <!-- ============================================================ -->
-  <!-- SERVICES                                                     -->
-  <!-- ============================================================ -->
-  <section id="services">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow" style="justify-content:center;">What we build</div>
-        <h2>Engineering built for scale</h2>
-        <p>Four disciplines, one delivery standard — from landing pages to enterprise platforms.</p>
+<!-- ============================================================ -->
+<!-- SERVICES                                                     -->
+<!-- ============================================================ -->
+
+<section id="services">
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div class="eyebrow" style="justify-content:center;">
+        What we build
       </div>
-      <div class="tabs-shell reveal">
-        <div class="tab-btns" id="tabBtns" role="tablist" aria-label="Service categories">
-          <button class="tab-btn active" data-tab="web" role="tab" aria-selected="true" aria-controls="panel-web"
-            id="tab-web">Website Development</button>
-          <button class="tab-btn" data-tab="app" role="tab" aria-selected="false" aria-controls="panel-app"
-            id="tab-app">Mobile Applications</button>
-          <button class="tab-btn" data-tab="transform" role="tab" aria-selected="false" aria-controls="panel-transform"
-            id="tab-transform">Digital Transformation</button>
-          <button class="tab-btn" data-tab="erp" role="tab" aria-selected="false" aria-controls="panel-erp"
-            id="tab-erp">ERP &amp; SaaS Engineering</button>
-        </div>
-        <div class="tab-panels">
-          <div class="tab-panel active" data-panel="web" id="panel-web" role="tabpanel" aria-labelledby="tab-web">
-            <h4>Website Development</h4>
-            <p>React and Next.js builds tuned for speed, SEO, and conversion — from marketing sites to full web
-              applications. Every build is mobile-first and performance-tested before delivery.</p>
-            <div class="tab-tags"><span class="tag">React</span><span class="tag">Next.js</span><span
-                class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">Node.js</span></div>
-          </div>
-          <div class="tab-panel" data-panel="app" id="panel-app" role="tabpanel" aria-labelledby="tab-app">
-            <h4>Mobile Applications</h4>
-            <p>Cross-platform iOS and Android apps built once, shipped everywhere, without sacrificing native feel. We
-              handle the full cycle: design, development, store submission.</p>
-            <div class="tab-tags"><span class="tag">React Native</span><span class="tag">Flutter</span><span
-                class="tag">Mobile APIs</span><span class="tag">Push Notifications</span></div>
-          </div>
-          <div class="tab-panel" data-panel="transform" id="panel-transform" role="tabpanel"
-            aria-labelledby="tab-transform">
-            <h4>Digital Transformation</h4>
-            <p>Migrating legacy infrastructure to modern, containerized architecture without disrupting day-to-day
-              operations. From assessment to deployment, we manage the transition.</p>
-            <div class="tab-tags"><span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">Cloud
-                Migration</span><span class="tag">PostgreSQL</span></div>
-          </div>
-          <div class="tab-panel" data-panel="erp" id="panel-erp" role="tabpanel" aria-labelledby="tab-erp">
-            <h4>ERP &amp; SaaS Engineering</h4>
-            <p>Purpose-built platforms for hospitals, schools, and retail — designed around how your team actually
-              works. Billing, scheduling, reporting, and integrations included.</p>
-            <div class="tab-tags"><span class="tag">PostgreSQL</span><span class="tag">Node.js</span><span
-                class="tag">Stripe API</span><span class="tag">MongoDB</span><span class="tag">MySQL</span></div>
-          </div>
-        </div>
-      </div>
+
+      <h2>Engineering built for scale</h2>
+
+      <p>
+        Four disciplines, one delivery standard — from landing pages
+        to enterprise platforms.
+      </p>
+
     </div>
-  </section>
+
+    <div class="tabs-shell">
+
+      <div class="tab-btns"
+           id="tabBtns"
+           role="tablist"
+           aria-label="Service categories">
+
+        <button
+          class="tab-btn active"
+          data-tab="web"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-web"
+          id="tab-web">
+          Website Development
+        </button>
+
+        <button
+          class="tab-btn"
+          data-tab="app"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-app"
+          id="tab-app">
+          Mobile Applications
+        </button>
+
+        <button
+          class="tab-btn"
+          data-tab="transform"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-transform"
+          id="tab-transform">
+          Digital Transformation
+        </button>
+
+      </div>
+
+      <div class="tab-panels">
+
+        <div
+          class="tab-panel active"
+          data-panel="web"
+          id="panel-web"
+          role="tabpanel"
+          aria-labelledby="tab-web">
+
+          <h4>Website Development</h4>
+
+          <p>
+            React and Next.js builds tuned for speed, SEO, and conversion —
+            from marketing sites to full web applications. Every build is
+            mobile-first and performance-tested before delivery.
+          </p>
+
+          <div class="tab-tags">
+            <span class="tag">React</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Node.js</span>
+          </div>
+
+        </div>
+
+
+        <div
+          class="tab-panel"
+          data-panel="app"
+          id="panel-app"
+          role="tabpanel"
+          aria-labelledby="tab-app">
+
+          <h4>Mobile Applications</h4>
+
+          <p>
+            Cross-platform iOS and Android apps built once, shipped
+            everywhere, without sacrificing native feel. We handle the
+            full cycle: design, development, store submission.
+          </p>
+
+          <div class="tab-tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Flutter</span>
+            <span class="tag">Mobile APIs</span>
+            <span class="tag">Push Notifications</span>
+          </div>
+
+        </div>
+
+
+        <div
+          class="tab-panel"
+          data-panel="transform"
+          id="panel-transform"
+          role="tabpanel"
+          aria-labelledby="tab-transform">
+
+          <h4>Digital Transformation</h4>
+
+          <p>
+            Migrating legacy infrastructure to modern, containerized
+            architecture without disrupting day-to-day operations.
+            From assessment to deployment, we manage the transition.
+          </p>
+
+          <div class="tab-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Cloud Migration</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
 
   <!-- ============================================================ -->
   <!-- ENGINEERING PIPELINE                                         -->
@@ -3910,8 +5322,8 @@
             <div class="eyebrow" style="justify-content:center;">Client feedback</div>
             <h2>What partners say</h2>
             <p>
-    Perspectives from the people and teams working with us to turn ideas into meaningful products.
-</p>
+              Perspectives from the people and teams working with us to turn ideas into meaningful products.
+            </p>
           </div>
           <div class="carousel reveal">
             <div class="carousel-track">
@@ -3919,24 +5331,24 @@
                 <div class="slide" role="group" aria-label="Testimonial 1 of 2">
                   <div class="quote-mark" aria-hidden="true">"</div>
                   <p class="quote">
-    What stood out was the way A/S NEXTGEN turned an idea into a clear,
-    practical product experience. The team focused on understanding the
-    problem first and building around what users actually need.
-</p>
+                    What stood out was the way A/S NEXTGEN turned an idea into a clear,
+                    practical product experience. The team focused on understanding the
+                    problem first and building around what users actually need.
+                  </p>
                   <div class="slide-person">
-                    <div class="avatar" aria-hidden="true">RN</div>
+                    <div class="avatar" aria-hidden="true">Y</div>
                     <p>Yaswanth M </p><span>Founder , Director / Education - B.Com , MBA , Pilot</span>
                   </div>
                 </div>
                 <div class="slide" role="group" aria-label="Testimonial 2 of 3">
                   <div class="quote-mark" aria-hidden="true">"</div>
                   <p class="quote">
-    The team brought together creativity and technology in a way that made
-    the development process feel simple. From the initial concept to the
-    working product, communication and iteration stayed at the centre.
-</p>
+                    The team brought together creativity and technology in a way that made
+                    the development process feel simple. From the initial concept to the
+                    working product, communication and iteration stayed at the centre.
+                  </p>
                   <div class="slide-person">
-                    <div class="avatar" aria-hidden="true">KV</div>
+                    <div class="avatar" aria-hidden="true">SR</div>
                     <p>Sri Ram V </p><span>Managing Director</span>
                   </div>
                 </div>
@@ -4863,41 +6275,8 @@
           }
         }
 
-        /* ============================================================
-           TERMINAL / SYSTEM STATUS
-           ============================================================ */
-        function initTerminal() {
-          const termLines = [
-            { text: '$ ./system_check --nextgen', cls: 'prompt' },
-            { text: '> domain ............. asnextgen.com', ok: true },
-            { text: '> mail ............... hello@asnextgen.com', ok: true },
-            { text: '> portfolio .......... 12 builds live', ok: true },
-            { text: '> security ........... TLS 1.3 active', ok: true },
-            { text: '> offices ............ CET + IST online', ok: true },
-            { text: '', cls: '' },
-            { text: 'SYSTEM STATUS: ALL GREEN', cls: 'ok' }
-          ];
-          const termBody = qs('#termBody');
-          if (!termBody) return;
-          termBody.innerHTML = '';
-          let delay = 200;
-          termLines.forEach(line => {
-            const div = document.createElement('div');
-            div.className = 'term-line';
-            if (line.ok) {
-              div.innerHTML = line.text + ' <span class="ok">[OK]</span>';
-            } else if (line.cls === 'prompt') {
-              div.innerHTML = '<span class="prompt">' + line.text + '</span>';
-            } else if (line.cls === 'ok') {
-              div.innerHTML = '<span class="ok">' + line.text + '</span> <span class="term-cursor" aria-hidden="true"></span>';
-            } else {
-              div.innerHTML = '&nbsp;';
-            }
-            termBody.appendChild(div);
-            setTimeout(() => div.classList.add('shown'), delay);
-            delay += prefersReduced ? 0 : 220;
-          });
-        }
+
+
 
         /* ============================================================
            SERVICE TABS
@@ -4998,7 +6377,7 @@
 
           if (!workGrid) return;
 
-          const chips = qsa('.chip', workGrid.parentElement);
+          const chips = qsa('.filter-chips .chip');
           const cards = qsa('.work-card', workGrid);
 
           chips.forEach(chip => {
@@ -5033,116 +6412,116 @@
            ============================================================ */
         function initProjectModals() {
 
-    const projects = {
+          const projects = {
 
-        metier: {
-            title: 'Métier',
-            industry: 'Job Search Platform',
+            metier: {
+              title: 'Métier',
+              industry: 'Job Search Platform',
 
-            problem:
+              problem:
                 'Finding suitable job opportunities can be difficult when users have to search through different sources and spend time going through opportunities that may not match their interests or requirements.',
 
-            solution:
+              solution:
                 'Métier provides a dedicated job-searching platform where users can explore opportunities in one place and make their job search simpler and more focused.',
 
-            stack: [
+              stack: [
                 'Web Application',
                 'Job Listings',
                 'Database'
-            ],
+              ],
 
-            result:
+              result:
                 'A simpler and more focused job-search experience that helps users discover relevant career opportunities more efficiently.',
 
-            phases: [
+              phases: [
                 'Platform Concept & Planning',
                 'Job Search & Listing Development',
                 'User Experience Development',
                 'Testing & Refinement'
-            ],
+              ],
 
-            arch: [
+              arch: [
                 'USER',
                 'WEB PLATFORM',
                 'JOB SEARCH',
                 'DATABASE',
                 'JOB RESULTS'
-            ]
-        },
+              ]
+            },
 
 
-        amora: {
-            title: 'Amora',
-            industry: 'Game',
+            amora: {
+              title: 'Amora',
+              industry: 'Game',
 
-            problem:
+              problem:
                 'Creating an engaging game requires simple interaction, enjoyable gameplay, meaningful choices, and challenges that keep players interested.',
 
-            solution:
+              solution:
                 'Amora is an interactive game designed around gameplay, player interaction, challenges, and meaningful choices to create an engaging experience.',
 
-            stack: [
+              stack: [
                 'HTML',
                 'CSS',
                 'JavaScript',
                 'Game Logic'
-            ],
+              ],
 
-            result:
+              result:
                 'An interactive game experience focused on engagement, entertainment, and enjoyable gameplay.',
 
-            phases: [
+              phases: [
                 'Game Concept & Planning',
                 'Gameplay Development',
                 'Interaction Development',
                 'Testing & Refinement'
-            ],
+              ],
 
-            arch: [
+              arch: [
                 'PLAYER',
                 'GAME UI',
                 'GAME LOGIC',
                 'GAME STATE',
                 'STORAGE'
-            ]
-        }
+              ]
+            }
 
-    };
-
-
-    /* ============================================================
-       MODAL ELEMENTS
-       ============================================================ */
-
-    const overlay = qs('#caseModal');
-    const modalTitle = qs('#modalTitle');
-    const modalIndustry = qs('#modalIndustry');
-    const modalBody = qs('#modalBody');
-
-    const modalClose = qs('#modalClose');
-    const modalViewArch = qs('#modalViewArch');
-    const modalStartSimilar = qs('#modalStartSimilar');
-
-    let currentProject = null;
+          };
 
 
-    /* ============================================================
-       OPEN MODAL
-       ============================================================ */
+          /* ============================================================
+             MODAL ELEMENTS
+             ============================================================ */
 
-    function openModal(key) {
+          const overlay = qs('#caseModal');
+          const modalTitle = qs('#modalTitle');
+          const modalIndustry = qs('#modalIndustry');
+          const modalBody = qs('#modalBody');
 
-        const p = projects[key];
+          const modalClose = qs('#modalClose');
+          const modalViewArch = qs('#modalViewArch');
+          const modalStartSimilar = qs('#modalStartSimilar');
 
-        if (!p) return;
-
-        currentProject = key;
-
-        modalTitle.textContent = p.title;
-        modalIndustry.textContent = p.industry;
+          let currentProject = null;
 
 
-        modalBody.innerHTML = `
+          /* ============================================================
+             OPEN MODAL
+             ============================================================ */
+
+          function openModal(key) {
+
+            const p = projects[key];
+
+            if (!p) return;
+
+            currentProject = key;
+
+            modalTitle.textContent = p.title;
+            modalIndustry.textContent = p.industry;
+
+
+            modalBody.innerHTML = `
 
             <div class="modal-section">
 
@@ -5179,8 +6558,8 @@
                 <div class="modal-section-value">
 
                     ${p.stack.map(t =>
-                        `<span class="tag">${t}</span>`
-                    ).join('')}
+              `<span class="tag">${t}</span>`
+            ).join('')}
 
                 </div>
 
@@ -5219,11 +6598,10 @@
                                 ${node}
                             </span>
 
-                            ${
-                                i < p.arch.length - 1
-                                ? '<span class="arch-arrow" style="color:var(--signal);margin-left:auto;">↓</span>'
-                                : ''
-                            }
+                            ${i < p.arch.length - 1
+                ? '<span class="arch-arrow" style="color:var(--signal);margin-left:auto;">↓</span>'
+                : ''
+              }
 
                         </div>
 
@@ -5286,209 +6664,195 @@
             </div>
 
         `;
-
-
-        overlay.classList.add('open');
-
-        document.body.style.overflow = 'hidden';
-
-        requestAnimationFrame(() => {
-
-            if (modalClose) {
-                modalClose.focus();
+            if (!overlay || !modalTitle || !modalIndustry || !modalBody) {
+              console.error('Case study modal elements are missing');
+              return;
             }
 
-        });
 
-    }
+            overlay.classList.add('open');
 
+            document.body.style.overflow = 'hidden';
 
-    /* ============================================================
-       CLOSE MODAL
-       ============================================================ */
+            requestAnimationFrame(() => {
 
-    function closeModal() {
+              if (modalClose) {
+                modalClose.focus();
+              }
 
-        overlay.classList.remove('open');
+            });
 
-        document.body.style.overflow = '';
-
-    }
+          }
 
 
-    /* ============================================================
-       PROJECT CARD CLICK
-       ============================================================ */
+          /* ============================================================
+             CLOSE MODAL
+             ============================================================ */
 
-    qsa('.work-card[data-project]').forEach(card => {
+          function closeModal() {
 
-        const projectKey = card.dataset.project;
+            overlay.classList.remove('open');
 
-        if (!projects[projectKey]) return;
+            document.body.style.overflow = '';
 
-
-        const open = () => {
-            openModal(projectKey);
-        };
+          }
 
 
-        on(card, 'click', open);
+          /* ============================================================
+             PROJECT CARD CLICK
+             ============================================================ */
+
+          qsa('.work-card[data-project]').forEach(card => {
+
+            const projectKey = card.dataset.project;
+
+            if (!projects[projectKey]) return;
 
 
-        on(card, 'keydown', e => {
+            const open = () => {
+              openModal(projectKey);
+            };
 
-            if (e.key === 'Enter' || e.key === ' ') {
+
+            on(card, 'click', open);
+
+
+            on(card, 'keydown', e => {
+
+              if (e.key === 'Enter' || e.key === ' ') {
 
                 e.preventDefault();
 
                 open();
 
-            }
+              }
 
-        });
+            });
 
-    });
-
-
-    /* ============================================================
-       CLOSE BUTTON
-       ============================================================ */
-
-   // Close modal
-on(modalClose, 'click', closeModal);
+          });
 
 
-// View Architecture
-on(modalViewArch, 'click', () => {
+          /* ============================================================
+             CLOSE BUTTON
+             ============================================================ */
 
-    const architecture = qs('#modalArchitecture');
-
-    if (!architecture) {
-        console.error('Architecture section not found');
-        return;
-    }
-
-    architecture.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-    });
-
-});
+          // Close modal
+          on(modalClose, 'click', closeModal);
 
 
-    /* ============================================================
-       CLICK OUTSIDE MODAL
-       ============================================================ */
 
-    if (overlay) {
 
-        on(overlay, 'click', e => {
 
-            if (e.target === overlay) {
+          /* ============================================================
+             CLICK OUTSIDE MODAL
+             ============================================================ */
+
+          if (overlay) {
+
+            on(overlay, 'click', e => {
+
+              if (e.target === overlay) {
 
                 closeModal();
 
+              }
+
+            });
+
+          }
+
+
+          /* ============================================================
+             ESCAPE KEY
+             ============================================================ */
+
+          on(document, 'keydown', e => {
+
+            if (
+              e.key === 'Escape' &&
+              overlay.classList.contains('open')
+            ) {
+
+              closeModal();
+
             }
 
-        });
-
-    }
+          });
 
 
-    /* ============================================================
-       ESCAPE KEY
-       ============================================================ */
+          /* ============================================================
+             VIEW ARCHITECTURE
+             ============================================================ */
 
-    on(document, 'keydown', e => {
+          if (modalViewArch) {
 
-        if (
-            e.key === 'Escape' &&
-            overlay.classList.contains('open')
-        ) {
+            on(modalViewArch, 'click', () => {
 
-            closeModal();
-
-        }
-
-    });
-
-
-    /* ============================================================
-       VIEW ARCHITECTURE
-       ============================================================ */
-
-    if (modalViewArch) {
-
-        on(modalViewArch, 'click', () => {
-
-            const architecture =
+              const architecture =
                 qs('#modalArchitecture');
 
-            if (architecture) {
+              if (architecture) {
 
                 architecture.scrollIntoView({
 
-                    behavior: 'smooth',
+                  behavior: 'smooth',
 
-                    block: 'center'
+                  block: 'center'
 
                 });
 
-            }
+              }
 
-        });
+            });
 
-    }
-
-
-    /* ============================================================
-       START A SIMILAR PROJECT
-       ============================================================ */
-
-    if (modalStartSimilar) {
-
-        on(modalStartSimilar, 'click', () => {
-
-            closeModal();
+          }
 
 
-            const ftypeEl = qs('#ftype');
+          /* ============================================================
+             START A SIMILAR PROJECT
+             ============================================================ */
 
-            if (ftypeEl && currentProject) {
+          if (modalStartSimilar) {
+
+            on(modalStartSimilar, 'click', () => {
+
+              closeModal();
+
+
+              const ftypeEl = qs('#ftype');
+
+              if (ftypeEl && currentProject) {
 
                 const typeMap = {
-
-                    metier: 'Website',
-
-                    amora: 'Website'
-
+                  metier: 'app',
+                  amora: 'game'
                 };
 
                 ftypeEl.value =
-                    typeMap[currentProject] || '';
+                  typeMap[currentProject] || '';
 
                 updateBrief();
 
-            }
+              }
 
 
-            const contact = qs('#contact');
+              const contact = qs('#contact');
 
-            if (contact) {
+              if (contact) {
 
                 contact.scrollIntoView({
 
-                    behavior: 'smooth'
+                  behavior: 'smooth'
 
                 });
 
-            }
+              }
 
-        });
+            });
 
-    }
+          }
 
-}
+        }
 
         /* ============================================================
            TESTIMONIALS CAROUSEL
@@ -5923,7 +7287,6 @@ on(modalViewArch, 'click', () => {
           initNavigation();
           initCommandPalette();
           initHeroCore();
-          initTerminal();
           initServiceTabs();
           initPipeline();
           initTechConstellation();
