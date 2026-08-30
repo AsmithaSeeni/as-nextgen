@@ -5796,8 +5796,10 @@
                 </div>
               </div>
               <form class="contact-form" id="contactForm" novalidate>
-    <input type="hidden" name="access_key" value="7b05e22b-d039-47bd-aadb-762bc7e879fc">
-    <input type="hidden" name="subject" value="New Project Enquiry - A/S NEXTGEN">
+    <input type="hidden" name="access_key" value="eeac3757-67be-4a81-8573-be9372df3d12">
+    <input type="hidden"
+       name="form_subject"
+       value="New Project Enquiry - A/S NEXTGEN">
                 <!-- Step 1 -->
                 <div class="form-step active" id="fstep1">
                   <div class="field-row">
@@ -5823,6 +5825,16 @@
                   <div class="form-nav">
                     <button type="button" class="btn btn-primary" id="fNext1">Continue <svg>
                         <use href="#ic-arrow" />
+                      </svg></button>
+                  </div>
+                </div>
+                <!-- Step 2 -->
+        placeholder="+91 98765 43210"
+        autocomplete="tel"
+        inputmode="tel"
+        required
+    >
+</div>
                       </svg></button>
                   </div>
                 </div>
@@ -7254,11 +7266,27 @@
           }
 
           on(qs('#fNext1'), 'click', () => {
-            const fname = qs('#fname'), femail = qs('#femail');
-            if (!fname.value.trim()) { fname.focus(); return; }
-            if (!femail.value.trim() || !femail.checkValidity()) { femail.focus(); return; }
-            showStep(1);
-          });
+    const fname = qs('#fname');
+    const femail = qs('#femail');
+    const fphone = qs('#fphone');
+
+    if (!fname.value.trim()) {
+        fname.focus();
+        return;
+    }
+
+    if (!femail.value.trim() || !femail.checkValidity()) {
+        femail.focus();
+        return;
+    }
+
+    if (!fphone.value.trim()) {
+        fphone.focus();
+        return;
+    }
+
+    showStep(1);
+});
           on(qs('#fBack2'), 'click', () => showStep(0));
           on(qs('#fNext2'), 'click', () => { updateBrief(); showStep(2); });
           on(qs('#fBack3'), 'click', () => showStep(1));
