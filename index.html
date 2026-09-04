@@ -1744,7 +1744,48 @@
   }
 
   }
+/* Mobile fix for Career Journey */
+@media (max-width: 600px) {
 
+  .career-path {
+    margin-top: 40px;
+    padding: 20px 16px 28px;
+    margin-bottom: 70px;
+  }
+
+  .career-path-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 8px;
+    overflow-x: visible;
+    width: 100%;
+  }
+
+  .cp-step {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .cp-node {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cp-dot {
+    margin: 0 auto 6px;
+  }
+
+  .cp-label {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  .cp-arrow {
+    display: none;
+  }
+
+}
 
   /* ============================================================
   VERY SMALL PHONES — 420px
@@ -4593,7 +4634,7 @@
 @media (max-width: 720px) {
 
   .hero {
-    padding-top: 105px !important;
+    padding-top: 55px !important;
     padding-bottom: 40px !important;
   }
 
@@ -5953,8 +5994,6 @@
             <div class="footer-col">
               <h5>Hungary HQ</h5>
               <ul>
-                <li>Őcsény, Reptér, 7143</li>
-                <li>Tolna County, Hungary</li>
                 <li><a href="tel:+36302694207">+36 30 269 4207</a></li>
                 <li>Mon–Fri, 09:00–18:00 CET</li>
               </ul>
@@ -5968,7 +6007,7 @@
                 <li>Mon–Fri, 09:00–18:00 IST</li>
               </ul>
             </div>
-          </div>
+
           <div class="footer-bottom">
             <p>© 2026 AS NEXTGEN Pvt Ltd. All rights reserved.</p>
             <div class="footer-shutdown">
